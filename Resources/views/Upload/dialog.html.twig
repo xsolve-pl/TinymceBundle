@@ -1,0 +1,19 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Image uploader</title>
+    {% javascripts '@StfalconTinymceBundle/Resources/public/vendor/tiny_mce/tiny_mce_popup.js'
+                   '@StfalconTinymceBundle/Resources/public/vendor/tiny_mce/utils/mctabs.js'
+                   '@StfalconTinymceBundle/Resources/public/vendor/tiny_mce/utils/form_utils.js'
+                   '@StfalconTinymceBundle/Resources/public/vendor/tiny_mce/utils/validate.js'
+    %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+  </head>
+  <body>
+    <form action="{{ path('_tinymce_upload_image') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+
+    <input type="submit" />
+</form>
+  </body>
+</html>
