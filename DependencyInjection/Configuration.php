@@ -41,7 +41,8 @@ class Configuration
                 // http://tinymce.moxiecode.com/wiki.php/Configuration:plugins
                 ->scalarNode('plugins')->defaultValue("")->end()
                 ->booleanNode('include_jquery')->defaultValue("true")->end()
-                
+                ->scalarNode('upload_directory')->default("")->end()
+                ->scalarNode('web_path')->default("images")->end()
             ->end();
 
         return $treeBuilder->buildTree();

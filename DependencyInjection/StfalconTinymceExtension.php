@@ -28,6 +28,8 @@ class StfalconTinymceExtension extends Extension
 
         $container->setParameter('stfalcon_tinymce.config', $config);
         $container->setParameter('stfalcon_tinymce.include_jquery', isset($config['include_jquery']) ? $config['include_jquery'] : true);
+        $container->setParameter('stfalcon_tinymce.upload_directory', $config['upload_directory']);
+        $container->setParameter('stfalcon_tinymce.web_path', $config['web_path']);
 
         // load dependency injection config
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));

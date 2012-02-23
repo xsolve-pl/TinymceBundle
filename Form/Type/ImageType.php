@@ -1,26 +1,26 @@
 <?php
 
-namespace Stfalcon\Bundle\TinymceBundle\Form;
+namespace Stfalcon\Bundle\TinymceBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
 
-class UploadType extends AbstractType
+class ImageType extends AbstractType
 {
     public function buildForm(FormBuilder $builder, array $options)
     {
-        $builder->add('file','file');
+        $builder->add('file', 'file');
     }
 
     public function getName()
     {
-        return 'mce_file_upload';
+        return 'tinymce_image_upload';
     }
     
     public function getDefaultOptions(array $options)
     {
         return array(
-            'data_class' => 'Stfalcon\Bundle\TinymceBundle\Form\Model\Image',
+            'data_class' => 'Stfalcon\Bundle\TinymceBundle\Model\Image',
         );
     }
 }

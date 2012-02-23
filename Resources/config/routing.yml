@@ -1,0 +1,11 @@
+stfalcon_tinymce_upload_setup:
+  pattern: /_tinymce/setup.js
+  defaults:  { _controller: StfalconTinymceBundle:Script:setup }
+
+stfalcon_tinymce_upload_dialog:
+  pattern: /_tinymce/dialog
+  defaults:  { _controller: StfalconTinymceBundle:Upload:dialog }
+
+stfalcon_tinymce_upload_image:
+  pattern: /_tinymce/upload
+  defaults:  { _controller: StfalconTinymceBundle:Upload:upload }

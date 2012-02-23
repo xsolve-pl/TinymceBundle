@@ -3,16 +3,15 @@
 namespace Stfalcon\Bundle\TinymceBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Stfalcon\Bundle\TinymceBundle\Form\UploadType;
-use Stfalcon\Bundle\TinymceBundle\Form\Model\Image;
+use Stfalcon\Bundle\TinymceBundle\Form\Type\ImageType;
+use Stfalcon\Bundle\TinymceBundle\Model\Image;
 
 class UploadController extends Controller
 {
     public function dialogAction()
     {
         $image = new Image();
-        
-        $form = $this->createForm(new UploadType(),$image);
+        $form = $this->createForm(new ImageType(), $image);
         
         return $this->render('StfalconTinymceBundle:Upload:dialog.html.twig',array(
             'form' => $form->createView()
@@ -22,13 +21,14 @@ class UploadController extends Controller
     public function uploadAction()
     {
         $image = new Image();
-        
-        $form = $this->createForm(new UploadType(),$image);
+        $form = $this->createForm(new ImageType(), $image);
         
         $request = $this->getRequest();
         $form->bindRequest($request);
         
-        if ( $form->isValid() ) {
+        if ($form->isValid()) {
+            $image->setUploadRootDir($this->container->getParameter('stfalcon_tinymce.upload_directory'));
+            $image->setWebPath($this->container->getParameter('stfalcon_tinymce.web_path'));
             $image->upload();
         }
         
@@ -36,14 +36,5 @@ class UploadController extends Controller
             'root_path' => $request->getHttpHost(),
             'image' => $image
         ));
-    }
-    
-    /**
-     *
-     * @return \Symfony\Component\Form\Form
-     */
-    protected function getUploadForm()
-    {
-        
     }
 }
