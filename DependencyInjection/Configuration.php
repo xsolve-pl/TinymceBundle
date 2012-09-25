@@ -5,6 +5,9 @@ namespace Stfalcon\Bundle\TinymceBundle\DependencyInjection;
 use Symfony\Component\Config\Definition\Builder\NodeBuilder;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 
+/**
+ * TinymceBundle configuration structure.
+ */
 class Configuration
 {
     /**
@@ -34,15 +37,19 @@ class Configuration
                 ->end()
                 // http://tinymce.moxiecode.com/wiki.php/Configuration:Advanced_theme
                 ->scalarNode('theme_advanced_buttons1')
-                    ->defaultValue("mylistbox,mysplitbutton,bold,italic,underline,separator,strikethrough,justifyleft,justifycenter,justifyright,justifyfull,bullist,numlist,undo,redo,link,unlink")
+                    ->defaultValue("mylistbox,mysplitbutton,bold,italic,underline,separator,strikethrough,justifyleft,
+                                    justifycenter,justifyright,justifyfull,bullist,numlist,undo,redo,link,unlink")
                 ->end()
                 ->scalarNode('theme_advanced_buttons2')->defaultValue("")->end()
                 ->scalarNode('theme_advanced_buttons3')->defaultValue("")->end()
                 // http://tinymce.moxiecode.com/wiki.php/Configuration:plugins
                 ->scalarNode('plugins')->defaultValue("")->end()
+                ->booleanNode('tinymce_jquery')->defaultValue("true")->end()
                 ->booleanNode('include_jquery')->defaultValue("true")->end()
                 ->scalarNode('upload_directory')->default("")->end()
                 ->scalarNode('web_path')->default("images")->end()
+                ->booleanNode('tinymce_buttons')->defaultValue(array())->end()
+
             ->end();
 
         return $treeBuilder->buildTree();
